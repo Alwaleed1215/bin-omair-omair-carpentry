@@ -21,7 +21,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', sans-serif; /* تطبيق الخط على كامل الموقع */
+            font-family: 'Cairo', sans-serif;
         }
 
         html {
@@ -33,7 +33,7 @@
             color: var(--text-dark);
             line-height: 1.6;
             padding-bottom: 70px;
-            padding-top: 70px; /* مساحة لرأس الموقع */
+            padding-top: 70px;
             overflow-x: hidden;
         }
 
@@ -100,7 +100,7 @@
 
         .loader-footer {
             position: absolute;
-            bottom: 30px;
+            bottom: 50px; /* تم رفع التوقيع لأعلى قليلاً */
         }
 
         /* ---------------- رأس الموقع (Header) ---------------- */
@@ -181,7 +181,6 @@
         .hero {
             position: relative;
             height: calc(100vh - 70px);
-            /* خلفية لون خشبي غامق */
             background: linear-gradient(135deg, #2D1B15 0%, #3E2723 50%, #1A0F0C 100%);
             display: flex;
             align-items: center;
@@ -198,7 +197,6 @@
         }
 
         .hero-content h1 {
-            /* نص صغير ليكون على سطر واحد */
             font-size: clamp(14px, 2.8vw, 28px);
             white-space: nowrap;
             color: var(--gold-color);
@@ -332,14 +330,43 @@
             gap: 40px;
         }
 
-        .contact-info, .contact-map { flex: 1; min-width: 300px; }
-        .contact-info h3 { color: var(--primary-color); margin-bottom: 20px; font-size: 1.8rem; font-weight: 800;}
+        .contact-info {
+            flex: 1; 
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* توسيط محتوى التواصل */
+            text-align: center;
+        }
+        
+        .contact-map { 
+            flex: 1; 
+            min-width: 300px; 
+        }
+
+        .contact-info h3 { 
+            color: var(--primary-color); 
+            margin-bottom: 25px; 
+            font-size: 1.8rem; 
+            font-weight: 800;
+        }
         
         .contact-item {
-            display: flex; align-items: center; margin-bottom: 20px; font-size: 1.1rem; font-weight: 600;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            margin-bottom: 20px; 
+            font-size: clamp(12px, 2.5vw, 15px); /* تصغير النص ليكون سطر واحد */
+            font-weight: 600;
+            white-space: nowrap; /* إجبار النص على سطر واحد */
         }
+        
         .contact-item i {
-            color: var(--gold-color); font-size: 1.5rem; margin-left: 15px; width: 30px; text-align: center;
+            color: var(--gold-color); 
+            font-size: 1.3rem; 
+            margin-left: 10px; 
+            width: 25px; 
+            text-align: center;
         }
 
         .map-wrapper iframe { width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
@@ -350,13 +377,13 @@
             background: #111;
             color: #fff;
             text-align: center;
-            padding: 30px 20px 90px;
+            padding: 30px 20px 100px; /* مسافة إضافية لتوضيح التوقيع فوق البار السفلي */
         }
 
         .copyright {
-            font-size: clamp(10px, 2vw, 14px); /* تصغير الخط ليكون على سطر واحد */
+            font-size: clamp(10px, 2vw, 14px);
             white-space: nowrap;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #aaa;
             font-weight: 600;
         }
@@ -365,17 +392,17 @@
             display: inline-block;
             background: linear-gradient(145deg, #2a2a2a, #111);
             border: 2px solid var(--gold-color);
-            padding: 12px 25px;
+            padding: 8px 20px; /* تصغير حجم التوقيع */
             border-radius: 50px;
             text-decoration: none;
             color: var(--gold-color);
-            font-size: 1rem;
+            font-size: 0.85rem; /* تصغير خط التوقيع */
             font-weight: 700;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
             transition: 0.3s;
         }
         .royal-signature:hover { background: var(--gold-color); color: #111; transform: scale(1.05); }
-        .royal-signature i { margin-left: 8px; font-size: 1.2rem;}
+        .royal-signature i { margin-left: 6px; font-size: 1rem;}
 
         /* ---------------- الشريط السفلي ---------------- */
         .bottom-nav {
@@ -402,11 +429,42 @@
         }
         .nav-item i { font-size: 1.3rem; margin-bottom: 4px; color: var(--gold-color); }
 
+        /* ---------------- أيقونة واتساب العائمة ---------------- */
+        .floating-wa {
+            position: fixed;
+            bottom: 85px; /* رفعها فوق الشريط السفلي */
+            left: 20px; /* على يسار الشاشة */
+            background-color: #25D366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            animation: float-wa 2.5s ease-in-out infinite; /* أنيميشن فخم وجذاب */
+        }
+        
+        .floating-wa:hover {
+            background-color: #128C7E;
+        }
+
         /* ---------------- الحركات (Animations) ---------------- */
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         @keyframes slowPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); } 50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); } }
         @keyframes blink { 0% { opacity: 0.2; } 20% { opacity: 1; } 100% { opacity: 0.2; } }
+        
+        /* حركة أيقونة الواتساب */
+        @keyframes float-wa {
+            0% { transform: translateY(0); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+            50% { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6); }
+            100% { transform: translateY(0); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+        }
 
     </style>
 </head>
@@ -544,7 +602,7 @@
                 <h3>نسعد بتواصلكم</h3>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <span>رقم التواصل: 0500000000 (سيتم تأكيده لاحقاً)</span>
+                    <span>رقم التواصل: 0549638299</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
@@ -593,6 +651,10 @@
         </a>
     </nav>
 
+    <a href="https://wa.me/966549638299" class="floating-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
         // إخفاء صفحة التحميل بعد 3 ثواني
         window.addEventListener('load', function() {
@@ -601,7 +663,7 @@
                 loader.style.opacity = '0';
                 setTimeout(function() {
                     loader.style.display = 'none';
-                }, 500); // الانتظار حتى تنتهي حركة الاختفاء
+                }, 500); 
             }, 3000);
         });
 
@@ -612,7 +674,6 @@
 
         menuBtn.addEventListener('click', function() {
             sideMenu.classList.toggle('active');
-            // تغيير الأيقونة عند الفتح والإغلاق
             if (sideMenu.classList.contains('active')) {
                 menuBtn.classList.remove('fa-bars');
                 menuBtn.classList.add('fa-times');
